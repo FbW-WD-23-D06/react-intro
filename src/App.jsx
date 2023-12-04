@@ -1,45 +1,34 @@
 import "./App.css";
-import johnPhoto from "./assets/jhon.avif";
 
 function App() {
-  const persons = [
-    {
-      name: "Jane",
-      age: 30,
-      city: "New York",
-      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      name: "Jhon",
-      age: 25,
-      city: "Chicago",
-      img: johnPhoto,
-    },
-    {
-      name: "Susan",
-      age: 28,
-      city: "Boston",
-      img: "https://plus.unsplash.com/premium_photo-1668989224643-6b79eaea2108?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
+  const grannies = [
+    { id: 1, name: "Adelheid", age: 70 },
+    { id: 2, name: "Bertha", age: 69 },
+    { id: 3, name: "Constanze", age: 78 },
   ];
 
-  console.log("persons:", persons);
   return (
-    <>
-      <div>
-        {/* "key" is needed to prevent performance issues, if we update just an array-item, only this item will be rendered and not all (if we don't have a unique key) */}
-        {persons.map((person) => (
-          // "crypto.randomUUID()" is a unique key generator, we can also use other generators or the object id (if we have one)
-          <div key={crypto.randomUUID()}>
-            <h2>{person.name}</h2>
-            <p>{person.age}</p>
-            <p>{person.city}</p>
-            <img src={person.img} alt="person" />
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="App">
+      <h1>Grannies</h1>
+      <ul style={{ listStyle: "none" }}>
+        {grannies.map((granny) => {
+          return (
+            <li key={granny.id}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <h2>Name: {granny.name} </h2>
+                {/* give dynamic styles using jsx*/}
+                {/* <h2 style={{ color: granny.age >= 70 ? "red" : "black" }}> */}
+                {/* give dynamic className using jsx*/}
+                <h2 className={granny.age >= 70 ? "over70" : "under70"}>
+                  Age: {granny.age}
+                </h2>
+              </div>
+              <br />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
-
 export default App;

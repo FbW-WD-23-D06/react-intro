@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.over70 {
+  color: red;
+}
+
+.under70 {
+  color: black;
+}
