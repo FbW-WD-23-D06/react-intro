@@ -9,4 +9,3 @@
 - **JSX**: Understand JSX and how to use JSX
   
 - **images**: Understand how to use images in React
-  
