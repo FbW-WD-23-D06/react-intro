@@ -11,3 +11,5 @@
 - **images**: Understand how to use images in React
 
 - **render-array-data**: Use an array to generate UI using map (loop)
+
+- **inline-style-vs-css-external-styles** : Understand the "style" prop. and when using inline style or external css styles
