@@ -1,33 +1,42 @@
 import "./App.css";
-import seaDiving from "./assets/sea-diving.avif";
+import johnPhoto from "./assets/jhon.avif";
 
 function App() {
-  const person = {
-    name: "Max",
-    age: 30,
-    address: {
-      street: "Musterstraße 1",
-      city: "Musterstadt",
+  const persons = [
+    {
+      name: "Jane",
+      age: 30,
+      city: "New York",
+      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-  };
+    {
+      name: "Jhon",
+      age: 25,
+      city: "Chicago",
+      img: johnPhoto,
+    },
+    {
+      name: "Susan",
+      age: 28,
+      city: "Boston",
+      img: "https://plus.unsplash.com/premium_photo-1668989224643-6b79eaea2108?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+  ];
 
-  // zwischen function definition und return können wir normal js schreiben
+  console.log("persons:", persons);
   return (
     <>
       <div>
-        {/* hier um js zu schreiben, brauchen wir die "{}", weil JSX ist */}
-        <p>name: {person.name}</p>
-        <p>age: {person.age}</p>
-        <p>street: {person.address.street}</p>
-        <p>city: {person.address.city}</p>
-        {/* image1 was saved locally and imported, image 2 is taken from the web normally as in html */}
-        <img
-          src="https://images.unsplash.com/photo-1682687981630-cefe9cd73072?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="sea diving"
-        />
-        {/* if the image is saved locally, we need to import it and use the import name (image imported) as "src value" or start the path from src like in the example below*/}
-        {/* <img src="src/assets/sea-diving.avif" alt="sea diving" /> */}
-        <img src={seaDiving} />
+        {/* "key" is needed to prevent performance issues, if we update just an array-item, only this item will be rendered and not all (if we don't have a unique key) */}
+        {persons.map((person) => (
+          // "crypto.randomUUID()" is a unique key generator, we can also use other generators or the object id (if we have one)
+          <div key={crypto.randomUUID()}>
+            <h2>{person.name}</h2>
+            <p>{person.age}</p>
+            <p>{person.city}</p>
+            <img src={person.img} alt="person" />
+          </div>
+        ))}
       </div>
     </>
   );
